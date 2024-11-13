@@ -14,13 +14,13 @@ config :bbank,
 # Configures the endpoint
 config :bbank, BbankWeb.Endpoint,
   url: [host: "localhost"],
-  adapter: Bandit.PhoenixAdapter,
+  adapter: Phoenix.Endpoint.Cowboy2Adapter,
   render_errors: [
     formats: [json: BbankWeb.ErrorJSON],
     layout: false
   ],
   pubsub_server: Bbank.PubSub,
-  live_view: [signing_salt: "NrPqlp6w"]
+  live_view: [signing_salt: "YVt20mzG"]
 
 # Configures Elixir's Logger
 config :logger, :console,

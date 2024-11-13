@@ -7,7 +7,7 @@ defmodule BbankWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_bbank_key",
-    signing_salt: "xh9JcAVe",
+    signing_salt: "jdWLo0Zs",
     same_site: "Lax"
   ]
 

@@ -23,7 +23,7 @@ config :bbank, BbankWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "OWW+fcRZer6kZlZynZTqbwtPWrIqpK16jAdIS803VqInkFSQfGSUJ3ES+zID3riq",
+  secret_key_base: "FzPvTucruaRdEH6uFDOI9Vnp6hU3Q+X+u6Xh6QNsiX22orprfcELKWcEPMOZWOxO",
   watchers: []
 
 # ## SSL Support
