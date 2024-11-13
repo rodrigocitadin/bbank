@@ -27,9 +27,15 @@ defmodule Bbank.Users.User do
   defp put_pass_hash(%Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset) do
     change(
       changeset,
-      password_hash: Argon2.hash_pwd_salt(password)
+      gen_pass_hash(password)
     )
   end
 
   defp put_pass_hash(changeset), do: changeset
+
+  defp gen_pass_hash(password) do
+    hash = Argon2.hash_pwd_salt(password)
+
+    %{password_hash: hash, password: nil}
+  end
 end
