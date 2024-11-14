@@ -8,6 +8,13 @@ defmodule BbankWeb.UsersJSON do
     }
   end
 
+  def get(%{user: user}) do
+    %{
+      message: "User found",
+      data: data(user)
+    }
+  end
+
   defp data(%User{} = user) do
     %{
       id: user.id,

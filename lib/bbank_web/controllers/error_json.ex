@@ -19,6 +19,12 @@ defmodule BbankWeb.ErrorJSON do
     %{errors: %{detail: Phoenix.Controller.status_message_from_template(template)}}
   end
 
+  def error(%{errors: :not_found}) do
+    %{
+      message: "Data not found"
+    }
+  end
+
   def error(%{changeset: changeset}) do
     %{
       message: "Changeset error",
