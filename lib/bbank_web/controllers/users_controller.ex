@@ -1,23 +1,21 @@
 defmodule BbankWeb.UsersController do
-  alias Bbank.Users.Create
+  alias Bbank.Users.{Create, User}
   use BbankWeb, :controller
 
+  action_fallback BbankWeb.FallbackController
+
   def create(conn, params) do
-    params
-    |> Create.call()
-    |> handle_response(conn)
+    with {:ok, %User{} = user} <- Create.call(params) do
+      conn
+      |> put_status(:created)
+      |> render(:create, user: user)
+    end
   end
 
-  defp handle_response({:ok, user}, conn) do
-    conn
-    |> put_status(:created)
-    |> render(:create, user: user)
-  end
-
-  defp handle_response({:error, changeset}, conn) do
-    conn
-    |> put_status(:bad_request)
-    |> put_view(json: BbankWeb.ErrorJSON)
-    |> render(:error, changeset: changeset)
-  end
+  # defp handle_response({:error, changeset}, conn) do
+  #   conn
+  #   |> put_status(:bad_request)
+  #   |> put_view(json: BbankWeb.ErrorJSON)
+  #   |> render(:error, changeset: changeset)
+  # end
 end
