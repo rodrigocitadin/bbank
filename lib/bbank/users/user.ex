@@ -4,6 +4,7 @@ defmodule Bbank.Users.User do
 
   @user_fields [:name, :password, :email]
 
+  @derive {Jason.Encoder, only: [:name, :email, :id]}
   schema "users" do
     field :name, :string
     field :password, :string, virtual: true
