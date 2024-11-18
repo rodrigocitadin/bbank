@@ -24,11 +24,17 @@ defmodule BbankWeb.UsersController do
 
   def update(conn, params) do
     with {:ok, %User{} = user} <- Users.update(params) do
-      IO.puts("here")
-
       conn
       |> put_status(:ok)
       |> render(:update, user: user)
+    end
+  end
+
+  def delete(conn, %{"id" => id}) do
+    with {:ok, _} <- Users.delete(id) do
+      conn
+      |> put_status(:no_content)
+      |> text("")
     end
   end
 end

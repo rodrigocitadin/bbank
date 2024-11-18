@@ -1,7 +1,8 @@
 defmodule Bbank.Users do
-  alias Bbank.Users.{Create, Get, Update}
+  alias Bbank.Users.{Create, Get, Update, Delete}
 
   defdelegate create(params), to: Create, as: :call
   defdelegate update(params), to: Update, as: :call
+  defdelegate delete(params), to: Delete, as: :call
   defdelegate get(params), to: Get, as: :call
 end
