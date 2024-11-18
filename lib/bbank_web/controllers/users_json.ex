@@ -19,4 +19,11 @@ defmodule BbankWeb.UsersJSON do
       data: user
     }
   end
+
+  def all(%{users: users}) do
+    %{
+      message: "All user records",
+      data: users
+    }
+  end
 end

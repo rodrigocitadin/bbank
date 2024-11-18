@@ -17,7 +17,6 @@ defmodule BbankWeb.UsersController do
   def show(conn, %{"id" => id}) do
     with {:ok, %User{} = user} <- Users.get(id) do
       conn
-      |> put_status(:ok)
       |> render(:get, user: user)
     end
   end
@@ -25,7 +24,6 @@ defmodule BbankWeb.UsersController do
   def update(conn, params) do
     with {:ok, %User{} = user} <- Users.update(params) do
       conn
-      |> put_status(:ok)
       |> render(:update, user: user)
     end
   end
@@ -36,5 +34,12 @@ defmodule BbankWeb.UsersController do
       |> put_status(:no_content)
       |> text("")
     end
+  end
+
+  def index(conn, _params) do
+    users = Users.all()
+
+    conn
+    |> render(:all, users: users)
   end
 end
