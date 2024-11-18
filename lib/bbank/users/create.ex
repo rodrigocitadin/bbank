@@ -8,4 +8,3 @@ defmodule Bbank.Users.Create do
     |> Repo.insert()
   end
 end
-
