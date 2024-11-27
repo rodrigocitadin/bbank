@@ -42,7 +42,9 @@ defmodule Bbank.MixProject do
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
       {:plug_cowboy, "~> 2.7"},
-      {:argon2_elixir, "~> 4.0"}
+      {:argon2_elixir, "~> 4.0"},
+      {:ex_machina, "~> 2.8.0", only: :test},
+      {:faker, "~> 0.18", only: :test}
     ]
   end
 
