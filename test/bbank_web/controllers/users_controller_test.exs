@@ -1,21 +1,20 @@
 defmodule BbankWeb.UsersControllerTest do
   use BbankWeb.ConnCase
 
+  import Bbank.Factory
+
   describe "create/2" do
     test "successfully creates an user", %{conn: conn} do
-      params = %{
-        name: "dummy",
-        email: "dummy@dummy",
-        password: "12345678"
-      }
+      json_user = build(:json_user)
+      %{email: email, name: name} = json_user
 
       response =
         conn
-        |> post(~p"/api/users/", params)
+        |> post(~p"/api/users/", json_user)
         |> json_response(:created)
 
       assert %{
-               "data" => %{"email" => "dummy@dummy", "id" => _id, "name" => "dummy"},
+               "data" => %{"email" => ^email, "id" => _id, "name" => ^name},
                "message" => "User created"
              } = response
     end
