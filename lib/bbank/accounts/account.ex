@@ -6,8 +6,9 @@ defmodule Bbank.Accounts.Account do
 
   @account_fields [:user_id]
 
+  @derive {Jason.Encoder, only: [:id, :user_id, :balance]}
   schema "accounts" do
-    field :balance, :decimal
+    field :balance, :decimal, default: 0
     belongs_to :user, User
 
     timestamps()

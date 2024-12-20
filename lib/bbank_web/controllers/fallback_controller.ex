@@ -15,4 +15,3 @@ defmodule BbankWeb.FallbackController do
     |> render(:error, changeset: changeset)
   end
 end
-
