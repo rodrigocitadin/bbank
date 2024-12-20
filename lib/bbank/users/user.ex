@@ -2,6 +2,8 @@ defmodule Bbank.Users.User do
   use Bbank.Schema
   import Ecto.Changeset
 
+  alias Bbank.Accounts.Account
+
   @user_fields [:name, :password, :email]
   @update_fields List.delete(@user_fields, :password)
 
@@ -11,6 +13,7 @@ defmodule Bbank.Users.User do
     field :password, :string, virtual: true
     field :password_hash, :string
     field :email, :string
+    has_one :account, Account
 
     timestamps()
   end
