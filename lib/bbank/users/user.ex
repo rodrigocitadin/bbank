@@ -26,13 +26,13 @@ defmodule Bbank.Users.User do
 
   def changeset(user, params) do
     user
-    |> do_validations(params, @update_fields)
+    |> do_validations(params, @update_fields, @update_fields)
     |> put_pass_hash()
   end
 
-  defp do_validations(changeset, params, required_params) do
+  defp do_validations(changeset, params, cast_params, required_params \\ @user_fields) do
     changeset
-    |> cast(params, @user_fields)
+    |> cast(params, cast_params)
     |> validate_required(required_params)
     |> validate_length(:name, min: 3)
     |> validate_length(:password, min: 8)
