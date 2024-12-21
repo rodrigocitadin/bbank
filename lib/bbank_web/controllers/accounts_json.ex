@@ -5,4 +5,11 @@ defmodule BbankWeb.AccountsJSON do
       data: account
     }
   end
+
+  def get(%{account: account}) do
+    %{
+      message: "Account found",
+      data: account
+    }
+  end
 end

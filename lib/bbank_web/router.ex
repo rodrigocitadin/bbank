@@ -9,7 +9,7 @@ defmodule BbankWeb.Router do
     pipe_through :api
 
     resources "/users", UsersController, except: [:new, :edit]
-    post "/accounts", AccountsController, :create
+    resources "/accounts", AccountsController, only: [:create, :show]
   end
 
   # Enable LiveDashboard in development

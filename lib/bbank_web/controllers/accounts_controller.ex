@@ -13,4 +13,11 @@ defmodule BbankWeb.AccountsController do
       |> render(:create, account: account)
     end
   end
+
+  def show(conn, %{"id" => id}) do
+    with {:ok, %Account{} = account} <- Accounts.get(id) do
+      conn
+      |> render(:get, account: account)
+    end
+  end
 end
