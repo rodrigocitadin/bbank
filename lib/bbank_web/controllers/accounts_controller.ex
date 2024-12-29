@@ -20,4 +20,16 @@ defmodule BbankWeb.AccountsController do
       |> render(:get, account: account)
     end
   end
+
+  def transaction(conn, %{
+        "from_account_id" => from_account_id,
+        "to_account_id" => to_account_id,
+        "value" => value
+      }) do
+    with {:ok, transaction} <- Accounts.transaction(from_account_id, to_account_id, value) do
+      conn
+      |> put_status(:ok)
+      |> render(:transaction, transaction: transaction)
+    end
+  end
 end

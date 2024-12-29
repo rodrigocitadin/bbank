@@ -10,6 +10,7 @@ defmodule BbankWeb.Router do
 
     resources "/users", UsersController, except: [:new, :edit]
     resources "/accounts", AccountsController, only: [:create, :show]
+    post "/accounts/transactions", AccountsController, :transaction
   end
 
   # Enable LiveDashboard in development

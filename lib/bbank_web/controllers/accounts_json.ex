@@ -6,6 +6,13 @@ defmodule BbankWeb.AccountsJSON do
     }
   end
 
+  def transaction(%{transaction: transaction}) do
+    %{
+      message: "Transaction done with success",
+      data: transaction
+    }
+  end
+
   def get(%{account: account}) do
     %{
       message: "Account found",
